@@ -8,7 +8,11 @@
       :shipping-ways="shippingWays"
       @after-choose-shipping="chooseShipping"
     />
-    <ShoppingCart />
+    <ShoppingCart
+      :initial-cart-items="cartItems"
+      :shipping-fee="shippingFee"
+
+    />
 
     <div class="line"></div>
 
@@ -65,6 +69,24 @@ const formData = {
   ],
 };
 
+const dummyData = [
+  {
+    id: 1,
+    name: "破壞補丁修身牛仔褲",
+    quantity: 1,
+    price: 3999,
+    img: require("@/assets/image/cart-item-1.png"),
+    subTotal: 3999,
+  },
+  {
+    id: 2,
+    name: "刷色直筒牛仔褲",
+    quantity: 1,
+    price: 1299,
+    img: require("@/assets/image/cart-item-2.png"),
+    subTotal: 1299,
+  },
+];
 
 export default {
   name: "Shop",
@@ -92,7 +114,12 @@ export default {
       },
       counties: formData.counties,
       shippingWays: formData.shippingWays,
+      shippingFee: 0,
+      cartItems: [],
     };
+  },
+  created() {
+    this.setCartItems();
   },
   methods: {
     changeStep(btn) {
@@ -108,14 +135,18 @@ export default {
           return {
             ...shippingWay,
             isChecked: false,
-          }
+          };
         } else {
+          this.shippingFee = shippingWay.fee;
           return {
             ...shippingWay,
             isChecked: true,
-          }
+          };
         }
       });
+    },
+    setCartItems() {
+      this.cartItems = dummyData;
     },
   },
 };
