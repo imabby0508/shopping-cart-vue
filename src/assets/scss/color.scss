@@ -1,0 +1,37 @@
+:root {
+  --body-bg: #ffffff;
+  --body-color: #2a2a2a;
+  --border-color: rgba(42, 42, 42, 0.1);
+  --btn-font-color: #000000;
+  --line-color: #f0f0f5;
+  --circle-color: #afb1bd;
+  --font-color: #808080;
+  --form-border-color: #4a4a4a;
+  --pink: #f67599;
+  --footer-bg: #e5e5e5;
+  --input-background-color: transparent;
+  --input-placeholder-color: #999999;
+  --input-font-color: #999999;
+  --option-color: #ffffff;
+  --img-color: brightness(100%);
+  --circle-container-font-color: #000000;
+}
+
+[data-theme="dark"] {
+  --body-bg: #121212;
+  --body-color: #ffffff;
+  --border-color: rgba(42, 42, 42, 0.1);
+  --btn-font-color: #ffffff;
+  --line-color: #ffffff;
+  --circle-color: #ffffff;
+  --font-color: rgba(255, 255, 255, 0.4);
+  --form-border-color: #5e5e5e;
+  --pink: #f67599;
+  --footer-bg: #333333;
+  --input-background-color: transparent;
+  --input-placeholder-color: rgba(255, 255, 255, 0.4);
+  --input-font-color: rgba(255, 255, 255, 0.4);
+  --option-color: #121212;
+  --img-color: invert(100%);
+  --circle-container-font-color: #808080;
+}

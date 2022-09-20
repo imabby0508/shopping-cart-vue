@@ -1,10 +1,16 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 import NotFound from "../views/NotFound.vue";
+import Shop from "../views/Shop.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/",
+    name: "shop",
+    component: Shop,
+  },
   {
     path: "*",
     name: "not-found",
@@ -13,7 +19,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
