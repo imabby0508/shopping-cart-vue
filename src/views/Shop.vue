@@ -11,12 +11,22 @@
     <ShoppingCart
       :initial-cart-items="cartItems"
       :shipping-fee="shippingFee"
-
+      @after-total-price="fetchTotalPrice"
     />
 
     <div class="line"></div>
 
-    <Buttons :current-step="currentStep" @after-change-step="changeStep" />
+    <Buttons
+      :current-step="currentStep"
+      @after-change-step="changeStep"
+      @after-submit-order="submitOrder"
+    />
+
+    <Modal
+      :order-data="orderData"
+      v-if="isCheckOut"
+      @after-handle-modal="closeModal"
+    />
   </main>
 </template>
 
@@ -25,6 +35,7 @@ import Stepper from "./../components/Stepper";
 import Form from "./../components/Form";
 import ShoppingCart from "./../components/ShoppingCart";
 import Buttons from "./../components/Buttons";
+import Modal from "./../components/Modal";
 
 const formData = {
   counties: [
@@ -95,6 +106,7 @@ export default {
     Form,
     ShoppingCart,
     Buttons,
+    Modal,
   },
   data() {
     return {
@@ -111,11 +123,13 @@ export default {
         cardNo: "",
         expiration: "",
         cvc: "",
+        totalPrice: "",
       },
       counties: formData.counties,
       shippingWays: formData.shippingWays,
       shippingFee: 0,
       cartItems: [],
+      isCheckOut: false,
     };
   },
   created() {
@@ -147,6 +161,19 @@ export default {
     },
     setCartItems() {
       this.cartItems = dummyData;
+    },
+    fetchTotalPrice(totalPrice) {
+      this.orderData.totalPrice = totalPrice;
+    },
+    submitOrder() {
+      const order = {
+        ...this.orderData,
+      };
+      console.log(order);
+      this.isCheckOut = true;
+    },
+    closeModal() {
+      this.isCheckOut = false;
     },
   },
 };

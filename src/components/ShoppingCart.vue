@@ -81,6 +81,11 @@ export default {
       );
     },
   },
+  watch: {
+    totalPrice: function () {
+      this.$emit("after-total-price", this.totalPrice);
+    },
+  },
   methods: {
     reduceQuantity(itemId) {
       this.cartItems = this.cartItems.map((cartItem) => {

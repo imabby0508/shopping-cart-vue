@@ -12,7 +12,13 @@
           class="btn-previous"
         />上一步
       </button>
-      <button v-if="currentStep === 3" class="btn btn-finish">確認下單</button>
+      <button
+        v-if="currentStep === 3"
+        class="btn btn-finish"
+        @click.stop.prevent="handleSubmit()"
+      >
+        確認下單
+      </button>
       <button
         v-else
         class="btn btn-next"
@@ -39,6 +45,9 @@ export default {
   methods: {
     handleChangeStep(btn) {
       this.$emit("after-change-step", btn);
+    },
+    handleSubmit() {
+      this.$emit("after-submit-order");
     },
   },
 };
