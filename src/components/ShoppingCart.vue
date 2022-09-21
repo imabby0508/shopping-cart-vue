@@ -8,13 +8,13 @@
           :key="cartItem.id"
           class="cart-items-wrapper"
         >
-          <div class="cart-item-wrapper d-flex">
+          <div class="cart-item-wrapper">
             <img
               :src="cartItem.img"
               alt="cart-item-1"
               class="cart-item__image"
             />
-            <div class="cart-item-details d-flex">
+            <div class="cart-item-details">
               <p class="cart-item__name">{{ cartItem.name }}</p>
               <div class="cart-item-quantity-wrapper d-flex">
                 <div

@@ -1,7 +1,7 @@
 <template>
   <div class="button-panel">
     <div class="container button-control d-flex">
-      <button
+      <button        
         :disabled="currentStep === 1"
         class="btn btn-previous"
         @click.stop.prevent="handleChangeStep('previous')"
@@ -12,6 +12,7 @@
           class="btn-previous"
         />上一步
       </button>
+
       <button
         v-if="currentStep === 3"
         class="btn btn-finish"
@@ -40,7 +41,7 @@ export default {
     currentStep: {
       type: Number,
       default: 1,
-    },
+    },    
   },
   methods: {
     handleChangeStep(btn) {

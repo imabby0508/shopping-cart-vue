@@ -1,6 +1,7 @@
 <template>
   <main class="main-content">
     <Stepper :current-step="currentStep" />
+
     <Form
       :current-step="currentStep"
       :order-data="orderData"
@@ -134,6 +135,9 @@ export default {
   },
   created() {
     this.setCartItems();
+    this.currentStep = Number(this.$route.params.stepId)
+      ? Number(this.$route.params.stepId)
+      : 1;
   },
   methods: {
     changeStep(btn) {
@@ -142,6 +146,7 @@ export default {
       } else {
         this.currentStep--;
       }
+      this.$router.push({ path: `/${this.currentStep}` });
     },
     chooseShipping(shippingId) {
       this.shippingWays = this.shippingWays.map((shippingWay) => {

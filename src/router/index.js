@@ -12,6 +12,11 @@ const routes = [
     component: Shop,
   },
   {
+    path: "/:stepId",
+    name: "checkout",
+    component: () => import("../views/Shop.vue"),
+  },
+  {
     path: "*",
     name: "not-found",
     component: NotFound,
