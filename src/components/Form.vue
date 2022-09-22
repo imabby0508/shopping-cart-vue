@@ -60,7 +60,12 @@
               <div class="form-row form-row-county">
                 <label for="">縣市</label>
                 <div class="select-wrapper">
-                  <select v-model="orderData.county" name="county" id="county">
+                  <select
+                    v-model="orderData.county"
+                    name="county"
+                    id="county"
+                    required
+                  >
                     <option value="" disabled selected>請選擇縣市</option>
                     <option
                       v-for="county in counties"

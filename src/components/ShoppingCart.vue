@@ -81,9 +81,19 @@ export default {
       );
     },
   },
+  created() {
+    this.cartItems =
+      JSON.parse(localStorage.getItem("CART_ITEMS")) || this.cartItems;
+  },
   watch: {
     totalPrice: function () {
       this.$emit("after-total-price", this.totalPrice);
+    },
+    cartItems: {
+      deep: true,
+      handler() {
+        localStorage.setItem("CART_ITEMS", JSON.stringify(this.cartItems));
+      },
     },
   },
   methods: {

@@ -138,6 +138,23 @@ export default {
     this.currentStep = Number(this.$route.params.stepId)
       ? Number(this.$route.params.stepId)
       : 1;
+    this.orderData =
+      JSON.parse(localStorage.getItem("ORDER_DATA")) || this.orderData;
+    this.shippingFee =
+      JSON.parse(localStorage.getItem("SHIPPING_FEE")) || this.shippingFee;
+  },
+  watch: {
+    orderData: {
+      deep: true,
+      handler() {
+        localStorage.setItem("ORDER_DATA", JSON.stringify(this.orderData));
+      },
+    },
+    shippingFee: {
+      handler() {
+        localStorage.setItem("SHIPPING_FEE", JSON.stringify(this.shippingFee));
+      },
+    },
   },
   methods: {
     changeStep(btn) {
