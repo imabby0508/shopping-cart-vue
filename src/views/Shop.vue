@@ -100,6 +100,9 @@ const dummyData = [
   },
 ];
 
+const ORDER_DATA = "ORDER_DATA";
+const SHIPPING_FEE = "SHIPPING_FEE";
+
 export default {
   name: "Shop",
   components: {
@@ -139,20 +142,20 @@ export default {
       ? Number(this.$route.params.stepId)
       : 1;
     this.orderData =
-      JSON.parse(localStorage.getItem("ORDER_DATA")) || this.orderData;
+      JSON.parse(localStorage.getItem(ORDER_DATA)) || this.orderData;
     this.shippingFee =
-      JSON.parse(localStorage.getItem("SHIPPING_FEE")) || this.shippingFee;
+      JSON.parse(localStorage.getItem(SHIPPING_FEE)) || this.shippingFee;
   },
   watch: {
     orderData: {
       deep: true,
       handler() {
-        localStorage.setItem("ORDER_DATA", JSON.stringify(this.orderData));
+        localStorage.setItem(ORDER_DATA, JSON.stringify(this.orderData));
       },
     },
     shippingFee: {
       handler() {
-        localStorage.setItem("SHIPPING_FEE", JSON.stringify(this.shippingFee));
+        localStorage.setItem(SHIPPING_FEE, JSON.stringify(this.shippingFee));
       },
     },
   },

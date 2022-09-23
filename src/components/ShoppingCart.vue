@@ -57,6 +57,8 @@
 </template>
 
 <script>
+const CART_ITEMS = "CART_ITEMS";
+
 export default {
   props: {
     initialCartItems: {
@@ -83,7 +85,7 @@ export default {
   },
   created() {
     this.cartItems =
-      JSON.parse(localStorage.getItem("CART_ITEMS")) || this.cartItems;
+      JSON.parse(localStorage.getItem(CART_ITEMS)) || this.cartItems;
   },
   watch: {
     totalPrice: function () {
@@ -92,7 +94,7 @@ export default {
     cartItems: {
       deep: true,
       handler() {
-        localStorage.setItem("CART_ITEMS", JSON.stringify(this.cartItems));
+        localStorage.setItem(CART_ITEMS, JSON.stringify(this.cartItems));
       },
     },
   },
